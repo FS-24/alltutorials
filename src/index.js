@@ -1,4 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 const element = <h1>Hello Ablam</h1>;
-ReactDOM.render(element, document.getElementById("container"));
+ReactDOM.createRoot(document.querySelector("#container")).render(element);
