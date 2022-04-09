@@ -1,43 +1,57 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
+    <div>
       <nav>
         <ul>
           <li>
-            <Link to="/">Acceuil</Link>
+            <Link to="/">React</Link>
           </li>
           <li>
-            <Link to="/users">Utilisateurs</Link>
+            <Link to="/docs">Docs</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/tutorial">Tuto</Link>
+          </li>
+          <li>
+            <Link to="/blog">Blog</Link>
           </li>
         </ul>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/docs" element={<Docs />} />
+        <Route path="/tutorial" element={<Tutorial />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 
 function Home() {
   return <div>Home</div>;
 }
-
-function Users() {
-  return <div>Users</div>;
+function Docs() {
+  return <div>Documentation</div>;
+}
+function Tutorial() {
+  return <div>Tutorial</div>;
+}
+function Blog() {
+  return <div>Blog</div>;
 }
 
-function About() {
-  return <div>About</div>;
+function NotFound() {
+  return <div> 404 Not found</div>;
 }
 
-ReactDOM.createRoot(document.querySelector("#container")).render(<App />);
+ReactDOM.createRoot(document.querySelector("#container")).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
